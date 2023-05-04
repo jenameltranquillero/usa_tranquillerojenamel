@@ -2,20 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Admin\Shop as AdminShop;
-
 class Home extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
-    }
+        $data = [
+            'meta_title' => 'My Page',
+            'title' => 'Tranquillero',
+        ];
 
-    function validation(){
-        $shop = new Shop();
-        echo $shop->product('laptop', 'acer'). '<br>';
+        $posts = ['Title 1', 'Title 2', 'Title 3']; 
+        $data['posts'] = $posts;
 
-        $adminShop = new AdminShop();
-        echo $adminShop->product('laptop','acer');
+        echo view('header', $data);
+        echo view('homepage');
+        echo view('footer');
     }
+    
+
+
 }
